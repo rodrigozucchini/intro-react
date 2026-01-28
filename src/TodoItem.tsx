@@ -1,8 +1,8 @@
-function TodoItem() {
+function TodoItem(props: { text: string, completed: boolean }) {
     return (
       <li>
         <span>V</span>
-        <p>bla bla</p>
+        <p>{props.text}</p>
         <span>X</span>
       </li>
     );
