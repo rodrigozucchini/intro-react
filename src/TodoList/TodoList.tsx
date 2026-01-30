@@ -1,6 +1,8 @@
+import './TodoList.css';
+
 function TodoList(props: { children: React.ReactNode }) {
     return (
-      <ul>
+      <ul className="TodoList">
         {props.children}
       </ul>
     );

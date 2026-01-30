@@ -1,9 +1,9 @@
 import './App.css'
-import { TodoCounter } from './TodoCounter';
-import { TodoItem } from './TodoItem';
-import { TodoList } from './TodoList';
-import { TodoSearch } from './TodoSearch';
-import { CreateTodoButton } from './CreateTodoButton';
+import { TodoCounter } from './TodoCounter/TodoCounter';
+import { TodoItem } from './TodoItem/TodoItem';
+import { TodoList } from './TodoList/TodoList';
+import { TodoSearch } from './TodoSearch/TodoSearch';
+import { CreateTodoButton } from './CreateTodoButton/CreateTodoButton';
 
 const defaultTodos: { text: string; completed: boolean; }[] = [
   { text: 'Cortar cebolla', completed: true},
