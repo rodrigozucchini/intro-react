@@ -2,13 +2,10 @@ import CheckSVG from './check.svg?react';
 import DeleteSVG from './delete.svg?react';
 import './TodoIcon.css';
 
+
 const iconTypes = {
-  check: (color) => (
-    <CheckSVG className="Icon-svg" fill={color} />
-  ),
-  delete: (color) => (
-    <DeleteSVG className="Icon-svg" fill={color} />
-  ),
+  "check": (color) => <CheckSVG className="Icon-svg" fill={color} />,
+  "delete": (color) => <DeleteSVG className="Icon-svg" fill={color} />,
 };
 
 function TodoIcon({ type, color, onClick }) {
@@ -19,7 +16,7 @@ function TodoIcon({ type, color, onClick }) {
     >
       {iconTypes[type](color)}
     </span>
-  );
+  )
 }
 
 export { TodoIcon };
