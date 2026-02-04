@@ -3,43 +3,57 @@ import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem/TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
+import { TodosLoading } from '../TodosLoading';
+import { TodosError } from '../TodosError';
+import { EmptyTodos } from '../EmptyTodo';
 
-function AppUI(
-    {
-        completedTodos,
-        totalTodos,
-        searchedTodos,
-        completeTodo,
-        deleteTodo,
-        searchValue,
-        setSearchValue,
-    }
-) {
-    return (    <>
-        <TodoCounter
-          completed={completedTodos}
-          total={totalTodos} 
-        />
-        <TodoSearch
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
-  
-        <TodoList>
-          {searchedTodos.map(todo => (
-            <TodoItem
-              key={todo.text}
-              text={todo.text}
-              completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
-              onDelete={() => deleteTodo(todo.text)}
-            />
-          ))}
-        </TodoList>
-        
-        <CreateTodoButton />
-      </>
-    )
+function AppUI({
+  loading,
+  error,
+  completedTodos,
+  totalTodos,
+  searchValue,
+  setSearchValue,
+  searchedTodos,
+  completeTodo,
+  deleteTodo,
+}) {
+  return (
+    <>
+      <TodoCounter
+        completed={completedTodos}
+        total={totalTodos} 
+      />
+      <TodoSearch
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
+
+      <TodoList>
+        {loading && (
+          <>
+            <TodosLoading />
+            <TodosLoading />
+            <TodosLoading />
+          </>
+        )}
+        {error && <TodosError/>}
+        {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
+
+        {searchedTodos.map(todo => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+      
+      <CreateTodoButton />
+    </>
+  );
 }
 
 export { AppUI };
