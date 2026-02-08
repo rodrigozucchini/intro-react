@@ -11,19 +11,21 @@ import { Modal } from '../Modal/Index';
 import React from 'react';
 
 function AppUI() {
-  const {          
+  const {
     loading,
     error,
     searchedTodos,
     completeTodo,
-    deleteTodo, 
-    openModal
+    deleteTodo,
+    openModal,
+    setOpenModal,
   } = React.useContext(TodoContext);
   
   return (
     <>
       <TodoCounter />
       <TodoSearch />
+
       <TodoList>
         {loading && (
           <>
@@ -45,11 +47,14 @@ function AppUI() {
           />
         ))}
       </TodoList>
-      <CreateTodoButton />
+      
+      <CreateTodoButton
+        setOpenModal={setOpenModal}
+      />
 
       {openModal && (
         <Modal>
-          <h1>aasfaf</h1>
+          La funcionalidad de agregar TODO
         </Modal>
       )}
     </>
